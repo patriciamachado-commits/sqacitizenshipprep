@@ -4,102 +4,459 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>U.S. Citizenship Mock Interview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Source Sans Pro',sans-serif;background:linear-gradient(135deg,#0c1929 0%,#1a365d 50%,#1e3a5f 100%);min-height:100vh;color:#fff;line-height:1.6}
-.container{max-width:700px;margin:0 auto;padding:20px;min-height:100vh}
-.header{text-align:center;padding:30px 0;border-bottom:2px solid rgba(255,255,255,0.1);margin-bottom:30px}
-.flag-icon{font-size:3rem;margin-bottom:10px}
-h1{font-family:'Merriweather',serif;font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:8px;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
-.subtitle{color:#93c5fd;font-size:1rem}
-.card{background:rgba(255,255,255,0.08);backdrop-filter:blur(10px);border-radius:16px;padding:25px;margin-bottom:20px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 8px 32px rgba(0,0,0,0.2)}
-.mode-btn{width:100%;padding:20px;margin-bottom:15px;background:linear-gradient(135deg,#1e40af 0%,#3b82f6 100%);border:none;border-radius:12px;color:#fff;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all 0.3s;text-align:left;display:flex;align-items:center;gap:15px}
-.mode-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(59,130,246,0.4)}
-.mode-btn:active{transform:translateY(0)}
-.mode-icon{font-size:2rem;width:50px;text-align:center}
-.mode-text h3{font-size:1.1rem;margin-bottom:4px}
-.mode-text p{font-size:0.85rem;opacity:0.8;font-weight:400}
-.progress-container{margin-bottom:25px}
-.progress-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:0.9rem;color:#93c5fd}
-.progress-bar{height:10px;background:rgba(255,255,255,0.15);border-radius:10px;overflow:hidden}
-.progress-fill{background:linear-gradient(90deg,#10b981,#34d399);height:100%;transition:width 0.4s ease;border-radius:10px}
-.officer-label{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,0.2);padding:8px 14px;border-radius:20px;font-size:0.85rem;color:#93c5fd;margin-bottom:15px}
-.question-text{font-family:'Merriweather',serif;font-size:1.3rem;font-weight:700;line-height:1.5;margin-bottom:20px;color:#fff}
-.tip-box{background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);border-radius:10px;padding:14px;margin-bottom:20px}
-.tip-label{font-size:0.8rem;font-weight:700;color:#fbbf24;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
-.tip-text{font-size:0.95rem;color:#fef3c7;line-height:1.5}
-.answer-input{width:100%;padding:16px;border:2px solid rgba(255,255,255,0.2);border-radius:12px;background:rgba(255,255,255,0.05);color:#fff;font-size:1.1rem;font-family:'Source Sans Pro',sans-serif;resize:none;min-height:80px;margin-bottom:15px;transition:border-color 0.3s}
-.answer-input:focus{outline:none;border-color:#3b82f6;background:rgba(255,255,255,0.08)}
-.answer-input::placeholder{color:rgba(255,255,255,0.4)}
-.btn-row{display:flex;gap:12px;flex-wrap:wrap}
-.btn{flex:1;padding:14px 20px;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.2s;min-width:120px}
-.btn-primary{background:linear-gradient(135deg,#10b981 0%,#059669 100%);color:#fff}
-.btn-primary:hover{box-shadow:0 4px 15px rgba(16,185,129,0.4)}
-.btn-primary:disabled{background:#4b5563;cursor:not-allowed;box-shadow:none}
-.btn-secondary{background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2)}
-.btn-secondary:hover{background:rgba(255,255,255,0.15)}
-.btn-voice{background:linear-gradient(135deg,#dc2626 0%,#ef4444 100%);color:#fff;width:100%;margin-bottom:15px;padding:18px;font-size:1.1rem}
-.btn-voice:hover{box-shadow:0 4px 15px rgba(239,68,68,0.4)}
-.btn-voice.recording{animation:pulse 1s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.7)}50%{box-shadow:0 0 0 15px rgba(239,68,68,0)}}
-.correct-answer-box{background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:14px;margin-top:15px}
-.correct-label{font-size:0.8rem;font-weight:700;color:#34d399;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
-.correct-text{font-size:1rem;color:#a7f3d0;line-height:1.5}
-.your-answer-box{background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:10px;padding:14px;margin-top:10px;margin-bottom:15px}
-.your-answer-label{font-size:0.8rem;font-weight:700;color:#93c5fd;margin-bottom:5px;text-transform:uppercase}
-.your-answer-text{font-size:1rem;color:#bfdbfe;line-height:1.5;font-style:italic}
-.results-card{text-align:center;padding:30px 20px}
-.results-icon{font-size:4rem;margin-bottom:15px}
-.results-title{font-family:'Merriweather',serif;font-size:1.8rem;font-weight:900;margin-bottom:10px}
-.results-score{font-size:3rem;font-weight:900;background:linear-gradient(90deg,#10b981,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:15px 0}
-.results-message{font-size:1.1rem;color:#93c5fd;margin-bottom:25px;line-height:1.6}
-.review-section{margin-top:25px;text-align:left}
-.review-title{font-weight:700;margin-bottom:15px;color:#93c5fd}
-.review-item{padding:14px;margin-bottom:10px;border-radius:10px;font-size:0.95rem}
-.review-correct{background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3)}
-.review-incorrect{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3)}
-.review-q{font-weight:600;margin-bottom:6px}
-.review-a{font-size:0.9rem;opacity:0.9}
-.review-user{font-size:0.85rem;opacity:0.7;margin-top:4px;font-style:italic}
-.info-box{background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:10px;padding:14px;margin-bottom:20px}
-.info-text{font-size:0.95rem;color:#bfdbfe;line-height:1.6}
-.back-btn{background:transparent;color:#93c5fd;border:1px solid rgba(147,197,253,0.3);padding:10px 20px;border-radius:8px;cursor:pointer;font-size:0.9rem;margin-bottom:20px;transition:all 0.2s}
-.back-btn:hover{background:rgba(147,197,253,0.1)}
-.phase-indicator{display:flex;gap:8px;margin-bottom:20px}
-.phase-dot{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,0.2)}
-.phase-dot.active{background:#3b82f6}
-.phase-dot.complete{background:#10b981}
-.speaking-tip{background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:10px;padding:14px;margin-bottom:20px}
-.speaking-tip-label{font-size:0.8rem;font-weight:700;color:#a78bfa;margin-bottom:5px;text-transform:uppercase}
-.speaking-tip-text{font-size:0.9rem;color:#ddd6fe;line-height:1.5}
-.audio-btn{background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.3);color:#93c5fd;padding:10px 16px;border-radius:8px;cursor:pointer;font-size:0.9rem;display:inline-flex;align-items:center;gap:8px;margin-bottom:15px;transition:all 0.2s}
-.audio-btn:hover{background:rgba(59,130,246,0.3)}
-.voice-status{text-align:center;padding:15px;margin-bottom:15px;border-radius:10px;font-size:0.95rem}
-.voice-status.listening{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#fca5a5}
-.error-box{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:14px;margin-bottom:20px}
-.error-text{font-size:0.95rem;color:#fca5a5;line-height:1.5}
-.footer-note{text-align:center;padding:20px;color:rgba(255,255,255,0.4);font-size:0.85rem}
-.input-mode-toggle{display:flex;gap:10px;margin-bottom:15px}
-.toggle-btn{flex:1;padding:10px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;background:rgba(255,255,255,0.05);color:#93c5fd;cursor:pointer;font-size:0.9rem;transition:all 0.2s}
-.toggle-btn.active{background:rgba(59,130,246,0.3);border-color:#3b82f6;color:#fff}
-.toggle-btn:hover{background:rgba(255,255,255,0.1)}
+body{
+  font-family:'Source Sans Pro',system-ui,sans-serif;
+  background:linear-gradient(135deg,#0c1929 0%,#1a365d 50%,#0c1929 100%);
+  min-height:100vh;
+  color:#e2e8f0;
+  line-height:1.6;
+}
+.container{
+  max-width:600px;
+  margin:0 auto;
+  padding:20px;
+  min-height:100vh;
+}
+.header{
+  text-align:center;
+  padding:30px 0;
+}
+.flag-icon{
+  font-size:3rem;
+  margin-bottom:10px;
+}
+h1{
+  font-family:'Merriweather',serif;
+  font-size:1.8rem;
+  font-weight:900;
+  color:#fff;
+  margin-bottom:8px;
+  text-shadow:0 2px 4px rgba(0,0,0,0.3);
+}
+.subtitle{
+  font-size:1rem;
+  color:#93c5fd;
+  font-weight:400;
+}
+.card{
+  background:rgba(30,58,138,0.4);
+  border:1px solid rgba(147,197,253,0.2);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:20px;
+  backdrop-filter:blur(10px);
+}
+.mode-btn{
+  width:100%;
+  background:linear-gradient(135deg,rgba(59,130,246,0.3),rgba(37,99,235,0.2));
+  border:1px solid rgba(147,197,253,0.3);
+  border-radius:12px;
+  padding:18px;
+  margin-bottom:12px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  transition:all 0.2s ease;
+  text-align:left;
+  color:#fff;
+}
+.mode-btn:hover{
+  background:linear-gradient(135deg,rgba(59,130,246,0.5),rgba(37,99,235,0.4));
+  border-color:rgba(147,197,253,0.5);
+  transform:translateY(-2px);
+}
+.mode-icon{
+  font-size:2rem;
+  width:50px;
+  text-align:center;
+}
+.mode-text h3{
+  font-family:'Merriweather',serif;
+  font-size:1.1rem;
+  font-weight:700;
+  margin-bottom:4px;
+}
+.mode-text p{
+  font-size:0.9rem;
+  color:#93c5fd;
+}
+.officer-card{
+  background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(5,150,105,0.1));
+  border:1px solid rgba(16,185,129,0.3);
+  border-radius:12px;
+  padding:20px;
+  margin-bottom:20px;
+}
+.officer-badge{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+  font-weight:700;
+  color:#6ee7b7;
+  font-size:0.9rem;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+.question-text{
+  font-family:'Merriweather',serif;
+  font-size:1.25rem;
+  font-weight:700;
+  color:#fff;
+  line-height:1.5;
+}
+.tip-box{
+  background:rgba(251,191,36,0.15);
+  border:1px solid rgba(251,191,36,0.3);
+  border-radius:10px;
+  padding:14px;
+  margin:15px 0;
+}
+.tip-label{
+  font-size:0.8rem;
+  font-weight:700;
+  color:#fbbf24;
+  margin-bottom:5px;
+  text-transform:uppercase;
+}
+.tip-text{
+  font-size:0.95rem;
+  color:#fef3c7;
+}
+.sample-box{
+  background:rgba(139,92,246,0.15);
+  border:1px solid rgba(139,92,246,0.3);
+  border-radius:10px;
+  padding:14px;
+  margin:15px 0;
+}
+.sample-label{
+  font-size:0.8rem;
+  font-weight:700;
+  color:#a78bfa;
+  margin-bottom:5px;
+  text-transform:uppercase;
+}
+.sample-text{
+  font-size:0.95rem;
+  color:#ddd6fe;
+  font-style:italic;
+}
+.answer-box{
+  background:rgba(16,185,129,0.15);
+  border:1px solid rgba(16,185,129,0.3);
+  border-radius:10px;
+  padding:14px;
+  margin:15px 0;
+}
+.answer-label{
+  font-size:0.8rem;
+  font-weight:700;
+  color:#6ee7b7;
+  margin-bottom:5px;
+  text-transform:uppercase;
+}
+.answer-text{
+  font-size:1rem;
+  color:#d1fae5;
+}
+.nav-btn{
+  padding:14px 24px;
+  border-radius:10px;
+  border:none;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+.primary-btn{
+  background:linear-gradient(135deg,#3b82f6,#2563eb);
+  color:#fff;
+  box-shadow:0 4px 15px rgba(59,130,246,0.3);
+}
+.primary-btn:hover{
+  background:linear-gradient(135deg,#60a5fa,#3b82f6);
+  transform:translateY(-2px);
+}
+.secondary-btn{
+  background:rgba(255,255,255,0.1);
+  color:#93c5fd;
+  border:1px solid rgba(147,197,253,0.3);
+}
+.secondary-btn:hover{
+  background:rgba(255,255,255,0.15);
+}
+.success-btn{
+  background:linear-gradient(135deg,#10b981,#059669);
+  color:#fff;
+}
+.danger-btn{
+  background:linear-gradient(135deg,#ef4444,#dc2626);
+  color:#fff;
+}
+.btn-row{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+.btn-row .nav-btn{
+  flex:1;
+}
+.progress-bar{
+  background:rgba(255,255,255,0.1);
+  border-radius:10px;
+  height:8px;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+.progress-fill{
+  background:linear-gradient(90deg,#3b82f6,#10b981);
+  height:100%;
+  transition:width 0.3s ease;
+}
+.progress-text{
+  text-align:center;
+  font-size:0.9rem;
+  color:#93c5fd;
+  margin-bottom:10px;
+}
+.phase-label{
+  display:inline-block;
+  background:rgba(59,130,246,0.2);
+  border:1px solid rgba(59,130,246,0.3);
+  border-radius:20px;
+  padding:6px 14px;
+  font-size:0.85rem;
+  color:#93c5fd;
+  margin-bottom:15px;
+}
+.back-btn{
+  background:transparent;
+  color:#93c5fd;
+  border:1px solid rgba(147,197,253,0.3);
+  padding:10px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:0.9rem;
+  margin-bottom:20px;
+  transition:all 0.2s;
+}
+.back-btn:hover{
+  background:rgba(147,197,253,0.1);
+}
+.audio-btn{
+  background:rgba(59,130,246,0.2);
+  border:1px solid rgba(59,130,246,0.3);
+  color:#93c5fd;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:0.9rem;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:15px;
+  transition:all 0.2s;
+}
+.audio-btn:hover{
+  background:rgba(59,130,246,0.3);
+}
+.mic-btn{
+  background:rgba(239,68,68,0.2);
+  border:2px solid rgba(239,68,68,0.4);
+  color:#fca5a5;
+  padding:14px 20px;
+  border-radius:50px;
+  cursor:pointer;
+  font-size:1rem;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  transition:all 0.2s;
+  margin:15px 0;
+}
+.mic-btn:hover{
+  background:rgba(239,68,68,0.3);
+}
+.mic-btn.recording{
+  background:rgba(239,68,68,0.4);
+  border-color:#ef4444;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.4)}
+  50%{box-shadow:0 0 0 15px rgba(239,68,68,0)}
+}
+.spoken-text{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;
+  padding:15px;
+  min-height:60px;
+  margin:15px 0;
+  font-size:1rem;
+  color:#e2e8f0;
+}
+.spoken-label{
+  font-size:0.8rem;
+  color:#93c5fd;
+  margin-bottom:8px;
+}
+.info-box{
+  background:rgba(59,130,246,0.15);
+  border:1px solid rgba(59,130,246,0.3);
+  border-radius:10px;
+  padding:14px;
+  margin-bottom:20px;
+}
+.info-text{
+  font-size:0.95rem;
+  color:#bfdbfe;
+  line-height:1.6;
+}
+.results-card{
+  text-align:center;
+  padding:30px 10px;
+}
+.results-icon{
+  font-size:4rem;
+  margin-bottom:15px;
+}
+.results-title{
+  font-family:'Merriweather',serif;
+  font-size:1.8rem;
+  font-weight:900;
+  margin-bottom:10px;
+}
+.results-score{
+  font-size:3rem;
+  font-weight:900;
+  background:linear-gradient(135deg,#10b981,#059669);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin:15px 0;
+}
+.results-message{
+  font-size:1.1rem;
+  color:#93c5fd;
+  margin-bottom:25px;
+  line-height:1.6;
+}
+.review-item{
+  background:rgba(255,255,255,0.05);
+  border-radius:10px;
+  padding:15px;
+  margin-bottom:10px;
+  text-align:left;
+}
+.review-item.correct{
+  border-left:4px solid #10b981;
+}
+.review-item.incorrect{
+  border-left:4px solid #ef4444;
+}
+.review-q{
+  font-weight:600;
+  margin-bottom:6px;
+  color:#fff;
+}
+.review-a{
+  font-size:0.9rem;
+  color:#93c5fd;
+}
+.footer-note{
+  text-align:center;
+  padding:20px;
+  color:rgba(255,255,255,0.4);
+  font-size:0.85rem;
+}
+.new-badge{
+  display:inline-block;
+  background:linear-gradient(135deg,#f59e0b,#d97706);
+  color:#fff;
+  font-size:0.7rem;
+  font-weight:700;
+  padding:3px 8px;
+  border-radius:10px;
+  margin-left:8px;
+  text-transform:uppercase;
+}
+.error-box{
+  background:rgba(239,68,68,0.15);
+  border:1px solid rgba(239,68,68,0.4);
+  border-radius:10px;
+  padding:16px;
+  margin:15px 0;
+}
+.error-title{
+  font-weight:700;
+  color:#fca5a5;
+  margin-bottom:10px;
+  font-size:1rem;
+}
+.error-text{
+  font-size:0.95rem;
+  color:#fecaca;
+  line-height:1.7;
+}
+.warning-box{
+  background:rgba(251,191,36,0.15);
+  border:1px solid rgba(251,191,36,0.4);
+  border-radius:10px;
+  padding:14px;
+  margin:15px 0;
+}
+.warning-text{
+  font-size:0.95rem;
+  color:#fef3c7;
+  line-height:1.5;
+}
 </style>
 </head>
 <body>
 <div class="container" id="app"></div>
+
 <script>
 const PERSONAL_QUESTIONS = [
   {q:"What is your full name?",tip:"Say your first name and last name clearly.",sample:"My name is [First] [Last]."},
   {q:"What is your current address?",tip:"Include street number, street name, city, and state.",sample:"I live at [number] [street], [city], [state]."},
   {q:"What is your date of birth?",tip:"Say month, day, and year.",sample:"I was born on [month] [day], [year]."},
   {q:"What is your country of birth?",tip:"Name the country where you were born.",sample:"I was born in [country]."},
-  {q:"How long have you lived in the United States?",tip:"Give the number of years or say the year you arrived.",sample:"I have lived here for [X] years."},
-  {q:"Are you married, single, divorced, or widowed?",tip:"Choose one answer.",sample:"I am married/single/divorced/widowed."},
-  {q:"Do you have any children?",tip:"Answer yes or no. If yes, say how many.",sample:"Yes, I have [number] children. / No."},
-  {q:"What is your current occupation?",tip:"Name your job, or say retired or looking for work.",sample:"I am a [job]. / I am retired."},
-  {q:"Why do you want to become a U.S. citizen?",tip:"Common: to vote, better opportunities, for my family.",sample:"I want to vote and participate in my community."},
+  {q:"How long have you lived in the United States?",tip:"Give the number of years or say the year you arrived.",sample:"I have lived here for [X] years. / I came in [year]."},
+  {q:"Are you married, single, divorced, or widowed?",tip:"Choose one answer.",sample:"I am married. / I am single. / I am divorced. / I am widowed."},
+  {q:"Do you have any children?",tip:"Answer yes or no. If yes, say how many.",sample:"Yes, I have [number] children. / No, I don't have children."},
+  {q:"What is your current occupation?",tip:"Name your job, or say retired or looking for work.",sample:"I am a [job]. / I am retired. / I am looking for work."},
+  {q:"Why do you want to become a U.S. citizen?",tip:"Common answers: to vote, better opportunities, for my family.",sample:"I want to vote and participate in my community."},
   {q:"Have you ever been arrested or committed a crime?",tip:"Answer honestly. Usually the answer is No.",sample:"No, I have never been arrested."}
+];
+
+// NEW: Tricky follow-up questions that USCIS officers may ask
+const TRICKY_QUESTIONS = [
+  {q:"Why does your daughter have a different last name than you?",tip:"Explain clearly: she may be married, use her father's name, or you changed your name.",sample:"My daughter uses her father's last name. / She is married and uses her husband's name."},
+  {q:"Why don't your children live with you?",tip:"Be honest about the situation - they may be adults, live with other parent, or studying elsewhere.",sample:"My children are adults and have their own homes. / They live with their mother/father."},
+  {q:"Why is your spouse not on your tax return?",tip:"Explain your filing status - you may file separately or have different circumstances.",sample:"We file taxes separately. / My spouse has their own income and files separately."},
+  {q:"Why did you get divorced?",tip:"Keep it simple and brief - you don't need to give personal details.",sample:"We had differences and decided to separate."},
+  {q:"How many times have you been married?",tip:"Answer honestly with the exact number.",sample:"I have been married [number] time(s)."},
+  {q:"Why have you moved so many times?",tip:"Explain your reasons - work, family, looking for better housing.",sample:"I moved for work. / I was looking for better housing for my family."},
+  {q:"Why is your address different from what's on your driver's license?",tip:"Explain that you recently moved and will update your license.",sample:"I recently moved and haven't updated my license yet."},
+  {q:"Who else lives in your home?",tip:"List the people: spouse, children, parents, roommates.",sample:"I live with my spouse and two children. / I live alone."},
+  {q:"Why do you live in a different state than your employer?",tip:"Explain remote work or commuting situation.",sample:"I work remotely from home. / I commute to work."},
+  {q:"Why were you unemployed for [period of time]?",tip:"Be honest - taking care of family, looking for work, health reasons.",sample:"I was taking care of my children. / I was looking for a new job."},
+  {q:"Why did you leave your last job?",tip:"Keep it professional - found better opportunity, company closed, laid off.",sample:"I found a better opportunity. / The company closed."},
+  {q:"Have you traveled outside the U.S. for more than 6 months?",tip:"Answer yes or no. If yes, explain why and for how long.",sample:"No, I have not. / Yes, I visited my family for [X] months."},
+  {q:"Why did you stay outside the country for so long?",tip:"Explain the reason - family emergency, caring for sick relative, work.",sample:"I was caring for my sick mother. / I had a family emergency."},
+  {q:"Have you ever failed to file taxes?",tip:"Answer honestly. If yes, explain you have corrected it.",sample:"No, I have always filed my taxes. / Yes, but I have corrected it and paid."},
+  {q:"Have you ever been arrested, even if charges were dropped?",tip:"Answer honestly. Even dropped charges should be mentioned.",sample:"No, I have never been arrested. / Yes, but the charges were dropped."},
+  {q:"Do you owe any taxes?",tip:"Be honest about your tax situation.",sample:"No, I don't owe any taxes. / Yes, but I have a payment plan."},
+  {q:"Why is your name spelled differently on some documents?",tip:"Explain any name variations or spelling errors on documents.",sample:"There was a spelling error on my birth certificate. / My name was translated differently."},
+  {q:"Have you ever used a different name?",tip:"Mention any previous names, maiden names, or nicknames on official documents.",sample:"Yes, my maiden name was [name]. / I used a nickname on some documents."}
 ];
 
 const CIVICS_QUESTIONS = [
@@ -151,21 +508,22 @@ const CIVICS_QUESTIONS = [
   {q:"How old do citizens have to be to vote for President?",a:"18 and older"},
   {q:"When is the last day you can send in federal income tax forms?",a:"April 15"},
   {q:"When must all men register for the Selective Service?",a:"At age 18 / Between 18 and 26"},
-  {q:"What is one reason colonists came to America?",a:"Freedom / Religious freedom / Economic opportunity"},
+  {q:"What is one reason colonists came to America?",a:"Freedom / Political liberty / Religious freedom / Economic opportunity"},
   {q:"Who lived in America before the Europeans arrived?",a:"American Indians / Native Americans"},
   {q:"What group of people was taken to America and sold as slaves?",a:"Africans / People from Africa"},
-  {q:"Why did the colonists fight the British?",a:"Because of high taxes / Because they didn't have self-government"},
+  {q:"Why did the colonists fight the British?",a:"Because of high taxes / Because the British army stayed in their houses / Because they didn't have self-government"},
   {q:"Who wrote the Declaration of Independence?",a:"Thomas Jefferson"},
   {q:"When was the Declaration of Independence adopted?",a:"July 4, 1776"},
-  {q:"There were 13 original states. Name three.",a:"New York / New Jersey / Virginia / Massachusetts / Pennsylvania / Maryland / Georgia"},
-  {q:"What happened at the Constitutional Convention?",a:"The Constitution was written"},
+  {q:"There were 13 original states. Name three.",a:"New York / New Jersey / Virginia / Massachusetts / Pennsylvania / etc."},
+  {q:"What happened at the Constitutional Convention?",a:"The Constitution was written / The Founding Fathers wrote the Constitution"},
   {q:"When was the Constitution written?",a:"1787"},
-  {q:"The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.",a:"James Madison / Alexander Hamilton / John Jay"},
+  {q:"The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.",a:"James Madison / Alexander Hamilton / John Jay / Publius"},
+  {q:"What is one thing Benjamin Franklin is famous for?",a:"U.S. diplomat / Oldest member of the Constitutional Convention / Started the first free libraries"},
   {q:"Who is the Father of Our Country?",a:"George Washington"},
   {q:"Who was the first President?",a:"George Washington"},
   {q:"What territory did the United States buy from France in 1803?",a:"The Louisiana Territory / Louisiana"},
   {q:"Name one war fought by the United States in the 1800s.",a:"War of 1812 / Mexican-American War / Civil War / Spanish-American War"},
-  {q:"Name the U.S. war between the North and the South.",a:"The Civil War"},
+  {q:"Name the U.S. war between the North and the South.",a:"The Civil War / The War between the States"},
   {q:"Name one problem that led to the Civil War.",a:"Slavery / Economic reasons / States' rights"},
   {q:"What was one important thing that Abraham Lincoln did?",a:"Freed the slaves / Saved the Union / Led the United States during the Civil War"},
   {q:"What did the Emancipation Proclamation do?",a:"Freed the slaves / Freed slaves in the Confederacy"},
@@ -178,85 +536,150 @@ const CIVICS_QUESTIONS = [
   {q:"During the Cold War, what was the main concern of the United States?",a:"Communism"},
   {q:"What movement tried to end racial discrimination?",a:"Civil rights movement"},
   {q:"What did Martin Luther King, Jr. do?",a:"Fought for civil rights / Worked for equality for all Americans"},
-  {q:"What major event happened on September 11, 2001 in the United States?",a:"Terrorists attacked the United States"},
-  {q:"Name one American Indian tribe in the United States.",a:"Cherokee / Navajo / Sioux / Apache / Iroquois / Creek / Choctaw"},
+  {q:"What major event happened on September 11, 2001?",a:"Terrorists attacked the United States"},
+  {q:"Name one American Indian tribe in the United States.",a:"Cherokee / Navajo / Sioux / Apache / Iroquois / etc."},
   {q:"Name one of the two longest rivers in the United States.",a:"Missouri River / Mississippi River"},
   {q:"What ocean is on the West Coast of the United States?",a:"Pacific Ocean"},
   {q:"What ocean is on the East Coast of the United States?",a:"Atlantic Ocean"},
   {q:"Name one U.S. territory.",a:"Puerto Rico / U.S. Virgin Islands / American Samoa / Guam"},
-  {q:"Name one state that borders Canada.",a:"Maine / New York / Michigan / Montana / Washington / Alaska"},
+  {q:"Name one state that borders Canada.",a:"Maine / New Hampshire / Vermont / New York / Michigan / Minnesota / etc."},
   {q:"Name one state that borders Mexico.",a:"California / Arizona / New Mexico / Texas"},
   {q:"What is the capital of the United States?",a:"Washington, D.C."},
-  {q:"Where is the Statue of Liberty?",a:"New York Harbor / Liberty Island"},
+  {q:"Where is the Statue of Liberty?",a:"New York Harbor / Liberty Island / New Jersey / Near New York City"},
   {q:"Why does the flag have 13 stripes?",a:"Because there were 13 original colonies"},
   {q:"Why does the flag have 50 stars?",a:"Because there is one star for each state / Because there are 50 states"},
   {q:"What is the name of the national anthem?",a:"The Star-Spangled Banner"},
   {q:"When do we celebrate Independence Day?",a:"July 4"},
-  {q:"Name two national U.S. holidays.",a:"New Year's Day / Martin Luther King Jr. Day / Presidents' Day / Memorial Day / Independence Day / Labor Day / Veterans Day / Thanksgiving / Christmas"}
+  {q:"Name two national U.S. holidays.",a:"New Year's Day / Martin Luther King Jr. Day / Presidents' Day / Memorial Day / Independence Day / Labor Day / Columbus Day / Veterans Day / Thanksgiving / Christmas"}
 ];
 
 let state = {
-  screen:'home',mode:null,phase:'personal',currentIndex:0,
-  personalAnswers:[],civicsAnswers:[],civicsQuestions:[],
-  userAnswer:'',showingAnswer:false,inputMode:'voice',
-  isRecording:false,voiceSupported:true,voiceError:null
+  screen:'home',
+  mode:null,
+  phase:'personal',
+  currentIndex:0,
+  personalQuestions:[],
+  trickyQuestions:[],
+  civicsQuestions:[],
+  civicsAnswers:[],
+  showingAnswer:false,
+  spokenText:'',
+  isRecording:false,
+  recognition:null,
+  micError:null
 };
 
-let recognition = null;
-
-function initSpeechRecognition(){
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if(!SR){state.voiceSupported=false;state.inputMode='text';return;}
-  recognition = new SR();
-  recognition.continuous = false;
-  recognition.interimResults = false;
-  recognition.lang = 'en-US';
-  recognition.onresult = (e) => {
-    state.userAnswer = e.results[0][0].transcript;
-    state.isRecording = false;
-    render();
-  };
-  recognition.onerror = (e) => {
-    state.isRecording = false;
-    if(e.error==='not-allowed') state.voiceError='microphone-blocked';
-    else if(e.error==='no-speech') state.voiceError='no-speech';
-    else state.voiceError=e.error;
-    render();
-  };
-  recognition.onend = () => {state.isRecording=false;render();};
-}
-
-function startRecording(){
-  if(!recognition)return;
-  state.voiceError=null;state.isRecording=true;render();
-  try{recognition.start();}catch(e){state.isRecording=false;state.voiceError='start-error';render();}
-}
-
-function stopRecording(){
-  if(recognition && state.isRecording){recognition.stop();state.isRecording=false;render();}
-}
-
-function shuffleArray(arr){
-  const s=[...arr];
-  for(let i=s.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[s[i],s[j]]=[s[j],s[i]];}
-  return s;
+function shuffle(array){
+  const arr=[...array];
+  for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
 }
 
 function speak(text){
   if('speechSynthesis' in window){
     window.speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(text);
-    u.rate=0.85;u.pitch=1;u.lang='en-US';
-    window.speechSynthesis.speak(u);
+    const utterance=new SpeechSynthesisUtterance(text);
+    utterance.rate=0.85;
+    utterance.pitch=1;
+    utterance.lang='en-US';
+    window.speechSynthesis.speak(utterance);
   }
+}
+
+function initSpeechRecognition(){
+  if('webkitSpeechRecognition' in window || 'SpeechRecognition' in window){
+    const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+    state.recognition=new SpeechRecognition();
+    state.recognition.continuous=true;
+    state.recognition.interimResults=true;
+    state.recognition.lang='en-US';
+    
+    state.recognition.onresult=(event)=>{
+      let transcript='';
+      for(let i=0;i<event.results.length;i++){
+        transcript+=event.results[i][0].transcript;
+      }
+      state.spokenText=transcript;
+      render();
+    };
+    
+    state.recognition.onerror=(event)=>{
+      console.log('Speech recognition error:',event.error);
+      state.isRecording=false;
+      if(event.error==='not-allowed'){
+        state.micError='not-allowed';
+      }else if(event.error==='no-speech'){
+        state.micError='no-speech';
+      }else{
+        state.micError=event.error;
+      }
+      render();
+    };
+    
+    state.recognition.onend=()=>{
+      state.isRecording=false;
+      render();
+    };
+  }
+}
+
+function getMicErrorMessage(){
+  if(state.micError==='not-allowed'){
+    return `<div class="error-box">
+      <div class="error-title">🎤 Microphone Access Needed</div>
+      <div class="error-text">
+        <strong>To enable voice practice:</strong><br>
+        1. Click the lock/tune icon in your browser's address bar<br>
+        2. Find "Microphone" and change it to "Allow"<br>
+        3. Refresh this page<br><br>
+        <em>If you're viewing this inside Google Sites, open it in a new tab for best results.</em>
+      </div>
+    </div>`;
+  }else if(state.micError==='no-speech'){
+    return `<div class="warning-box">
+      <div class="warning-text">No speech detected. Try speaking louder or closer to your microphone.</div>
+    </div>`;
+  }else if(state.micError){
+    return `<div class="warning-box">
+      <div class="warning-text">Microphone error: ${state.micError}. Try refreshing the page.</div>
+    </div>`;
+  }
+  return '';
+}
+
+function toggleRecording(){
+  if(!state.recognition)return;
+  
+  if(state.isRecording){
+    state.recognition.stop();
+    state.isRecording=false;
+  }else{
+    state.spokenText='';
+    state.micError=null;
+    state.isRecording=true;
+    try{
+      state.recognition.start();
+    }catch(e){
+      console.error('Recognition error:',e);
+      state.isRecording=false;
+      state.micError=e.message||'unknown';
+    }
+  }
+  render();
 }
 
 function render(){
   const app=document.getElementById('app');
-  if(state.screen==='home') app.innerHTML=renderHome();
-  else if(state.screen==='interview') app.innerHTML=renderInterview();
-  else if(state.screen==='results') app.innerHTML=renderResults();
-  attachEventListeners();
+  if(state.screen==='home'){
+    app.innerHTML=renderHome();
+  }else if(state.screen==='interview'){
+    app.innerHTML=renderInterview();
+  }else if(state.screen==='results'){
+    app.innerHTML=renderResults();
+  }
 }
 
 function renderHome(){
@@ -264,221 +687,305 @@ function renderHome(){
     <div class="header">
       <div class="flag-icon">🇺🇸</div>
       <h1>U.S. Citizenship Mock Interview</h1>
-      <p class="subtitle">Practice speaking for your naturalization interview</p>
+      <p class="subtitle">Practice for your naturalization interview</p>
     </div>
+    
     <div class="card">
       <div class="info-box">
         <p class="info-text">Practice answering interview questions out loud! This simulates the real USCIS naturalization interview.</p>
       </div>
-      <button class="mode-btn" data-mode="full">
+      
+      <button class="mode-btn" onclick="startMode('full')">
         <span class="mode-icon">📋</span>
-        <div class="mode-text"><h3>Full Mock Interview</h3><p>10 personal + 10 civics questions</p></div>
+        <div class="mode-text">
+          <h3>Full Mock Interview</h3>
+          <p>Personal + tricky questions + 10 civics</p>
+        </div>
       </button>
-      <button class="mode-btn" data-mode="personal">
+      
+      <button class="mode-btn" onclick="startMode('personal')">
         <span class="mode-icon">👤</span>
-        <div class="mode-text"><h3>Personal Questions Only</h3><p>Practice answering about yourself</p></div>
+        <div class="mode-text">
+          <h3>Personal Questions Only</h3>
+          <p>Practice answering about yourself</p>
+        </div>
       </button>
-      <button class="mode-btn" data-mode="civics">
+      
+      <button class="mode-btn" onclick="startMode('tricky')">
+        <span class="mode-icon">🤔</span>
+        <div class="mode-text">
+          <h3>Tricky Follow-up Questions<span class="new-badge">New</span></h3>
+          <p>Practice difficult life situation questions</p>
+        </div>
+      </button>
+      
+      <button class="mode-btn" onclick="startMode('civics')">
         <span class="mode-icon">🏛️</span>
-        <div class="mode-text"><h3>Civics Questions Only</h3><p>Practice the 100 civics questions</p></div>
+        <div class="mode-text">
+          <h3>Civics Questions Only</h3>
+          <p>Practice the 100 civics questions</p>
+        </div>
       </button>
     </div>
-    <div class="speaking-tip">
-      <p class="speaking-tip-label">🎤 Voice Practice</p>
-      <p class="speaking-tip-text">Use the microphone to record your spoken answers! Speaking practice builds confidence.</p>
+    
+    <div class="info-box">
+      <p class="info-text">🎤 <strong>Voice Practice:</strong> Use the microphone button to record your spoken answers! Speaking practice helps you feel confident in your real interview.</p>
     </div>
+    
     <p class="footer-note">Prepared for SQA Education students</p>
   `;
 }
 
 function renderInterview(){
-  const isPersonal = state.phase==='personal';
-  const questions = isPersonal ? PERSONAL_QUESTIONS : state.civicsQuestions;
-  const currentQ = questions[state.currentIndex];
-  const totalPersonal = state.mode==='civics' ? 0 : PERSONAL_QUESTIONS.length;
-  const totalCivics = state.mode==='personal' ? 0 : 10;
-  const total = totalPersonal + totalCivics;
-  let currentNum = state.mode==='full' ? (isPersonal ? state.currentIndex+1 : totalPersonal+state.currentIndex+1) : state.currentIndex+1;
-  const progress = (currentNum/total)*100;
+  let questions,currentQ,phaseLabel;
   
-  let phaseIndicator = state.mode==='full' ? `
-    <div class="phase-indicator">
-      <div class="phase-dot ${isPersonal?'active':'complete'}"></div>
-      <div class="phase-dot ${!isPersonal?'active':''}"></div>
-    </div>` : '';
-  
-  const phaseLabel = isPersonal ? 'Personal Question' : 'Civics Question';
-  
-  let tipContent = isPersonal ? `
-    <div class="tip-box"><p class="tip-label">💡 Tip</p><p class="tip-text">${currentQ.tip}</p></div>
-    <div class="speaking-tip"><p class="speaking-tip-label">Example Answer</p><p class="speaking-tip-text">${currentQ.sample}</p></div>
-  ` : '';
-  
-  let errorMessage = '';
-  if(state.voiceError==='microphone-blocked') errorMessage=`<div class="error-box"><p class="error-text">🎤 Microphone blocked. Click the lock icon in your browser's address bar, allow microphone, then refresh. Or switch to typing.</p></div>`;
-  else if(state.voiceError==='no-speech') errorMessage=`<div class="error-box"><p class="error-text">No speech detected. Try again and speak clearly.</p></div>`;
-  else if(state.voiceError) errorMessage=`<div class="error-box"><p class="error-text">Voice error: ${state.voiceError}. Try typing instead.</p></div>`;
-  
-  let voiceStatus = state.isRecording ? `<div class="voice-status listening">🎤 Listening... Speak your answer now!</div>` : '';
-  
-  let inputSection;
-  if(state.showingAnswer){
-    inputSection = `
-      ${state.userAnswer ? `<div class="your-answer-box"><p class="your-answer-label">Your Answer:</p><p class="your-answer-text">"${state.userAnswer}"</p></div>` : ''}
-      <div class="correct-answer-box"><p class="correct-label">✓ Correct Answer</p><p class="correct-text">${currentQ.a}</p></div>
-      <div class="btn-row" style="margin-top:15px"><button class="btn btn-primary" id="nextBtn">Next Question →</button></div>
-    `;
-  } else {
-    const voiceBtnClass = state.isRecording ? 'btn btn-voice recording' : 'btn btn-voice';
-    const voiceBtnText = state.isRecording ? '⏹️ Stop Recording' : '🎤 Record Your Answer';
-    inputSection = `
-      ${voiceStatus}${errorMessage}
-      <div class="input-mode-toggle">
-        <button class="toggle-btn ${state.inputMode==='voice'?'active':''}" data-input="voice">🎤 Voice</button>
-        <button class="toggle-btn ${state.inputMode==='text'?'active':''}" data-input="text">⌨️ Type</button>
-      </div>
-      ${state.inputMode==='voice' && state.voiceSupported ? `
-        <button class="${voiceBtnClass}" id="voiceBtn">${voiceBtnText}</button>
-        ${state.userAnswer ? `<div class="your-answer-box"><p class="your-answer-label">You said:</p><p class="your-answer-text">"${state.userAnswer}"</p></div>` : ''}
-      ` : `
-        <textarea class="answer-input" id="answerInput" placeholder="Type your answer here..." rows="3">${state.userAnswer}</textarea>
-      `}
-      <div class="btn-row">
-        ${!isPersonal ? '<button class="btn btn-secondary" id="showAnswerBtn">Show Answer</button>' : ''}
-        <button class="btn btn-primary" id="submitBtn">${isPersonal ? 'Next Question →' : 'Submit Answer'}</button>
-      </div>
-    `;
+  if(state.phase==='personal'){
+    questions=state.personalQuestions;
+    currentQ=questions[state.currentIndex];
+    phaseLabel='Personal Questions';
+  }else if(state.phase==='tricky'){
+    questions=state.trickyQuestions;
+    currentQ=questions[state.currentIndex];
+    phaseLabel='Tricky Follow-up Questions';
+  }else{
+    questions=state.civicsQuestions;
+    currentQ=questions[state.currentIndex];
+    phaseLabel='Civics Questions';
   }
   
+  const total=questions.length;
+  const progress=((state.currentIndex+1)/total)*100;
+  const isCivics=state.phase==='civics';
+  
   return `
-    <button class="back-btn" id="backBtn">← Back to Menu</button>
-    ${phaseIndicator}
+    <button class="back-btn" onclick="backToHome()">← Back to Home</button>
+    
     <div class="card">
-      <div class="progress-container">
-        <div class="progress-label"><span>${phaseLabel}</span><span>${currentNum} of ${total}</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+      <span class="phase-label">${phaseLabel}</span>
+      
+      <div class="progress-text">Question ${state.currentIndex+1} of ${total}</div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width:${progress}%"></div>
       </div>
-      <div class="officer-label"><span>🎖️</span><span>USCIS Officer asks:</span></div>
-      <button class="audio-btn" id="listenBtn">🔊 Listen to Question</button>
-      <p class="question-text">${currentQ.q}</p>
-      ${tipContent}
-      ${inputSection}
+      
+      <div class="officer-card">
+        <div class="officer-badge">
+          <span>👮</span>
+          <span>USCIS Officer</span>
+        </div>
+        <div class="question-text">${currentQ.q}</div>
+      </div>
+      
+      <button class="audio-btn" onclick="speak('${currentQ.q.replace(/'/g,"\\'")}')">
+        🔊 Listen to Question
+      </button>
+      
+      ${currentQ.tip?`
+        <div class="tip-box">
+          <div class="tip-label">💡 Tip</div>
+          <div class="tip-text">${currentQ.tip}</div>
+        </div>
+      `:''}
+      
+      ${currentQ.sample?`
+        <div class="sample-box">
+          <div class="sample-label">📝 Example Answer</div>
+          <div class="sample-text">"${currentQ.sample}"</div>
+        </div>
+      `:''}
+      
+      ${isCivics && state.showingAnswer?`
+        <div class="answer-box">
+          <div class="answer-label">✅ Correct Answer</div>
+          <div class="answer-text">${currentQ.a}</div>
+        </div>
+      `:''}
+      
+      ${state.recognition?`
+        ${getMicErrorMessage()}
+        <div style="text-align:center;">
+          <button class="mic-btn ${state.isRecording?'recording':''}" onclick="toggleRecording()">
+            ${state.isRecording?'🔴 Stop Recording':'🎤 Speak Your Answer'}
+          </button>
+        </div>
+        
+        ${state.spokenText?`
+          <div class="spoken-label">Your answer:</div>
+          <div class="spoken-text">${state.spokenText}</div>
+        `:''}
+      `:''}
+      
+      ${isCivics?`
+        ${!state.showingAnswer?`
+          <div class="btn-row">
+            <button class="nav-btn secondary-btn" onclick="showAnswer()">Show Answer</button>
+          </div>
+        `:`
+          <div class="btn-row">
+            <button class="nav-btn success-btn" onclick="markAnswer(true)">✓ I Got It</button>
+            <button class="nav-btn danger-btn" onclick="markAnswer(false)">✗ Need Practice</button>
+          </div>
+        `}
+      `:`
+        <div class="btn-row">
+          <button class="nav-btn primary-btn" onclick="nextQuestion()" style="width:100%">
+            ${state.currentIndex<total-1?'Next Question →':'Finish'}
+          </button>
+        </div>
+      `}
     </div>
   `;
 }
 
 function renderResults(){
-  const civicsCorrect = state.civicsAnswers.filter(a=>a.correct).length;
-  const totalCivics = state.civicsAnswers.length;
-  const passed = totalCivics===0 || civicsCorrect>=6;
+  const correct=state.civicsAnswers.filter(a=>a).length;
+  const total=state.civicsQuestions.length;
+  const passed=correct>=6;
+  const percentage=Math.round((correct/total)*100);
   
-  let scoreSection = totalCivics>0 ? `
-    <p class="results-score">${civicsCorrect} / ${totalCivics}</p>
-    <p class="results-message">${passed ? 'Great job! You passed the civics portion!' : 'You need 6 correct to pass. Keep practicing!'}</p>
-  ` : `<p class="results-message">Good practice! Speak clearly and confidently in your interview.</p>`;
-  
-  let reviewSection = state.civicsAnswers.length>0 ? `
-    <div class="review-section"><p class="review-title">📝 Review:</p>
-    ${state.civicsAnswers.map((item,i)=>`
-      <div class="review-item ${item.correct?'review-correct':'review-incorrect'}">
-        <p class="review-q">${i+1}. ${item.question}</p>
-        <p class="review-a">Correct: ${item.answer}</p>
-        ${item.userAnswer ? `<p class="review-user">You said: "${item.userAnswer}"</p>` : ''}
-      </div>
-    `).join('')}
+  const review=state.civicsQuestions.map((q,i)=>`
+    <div class="review-item ${state.civicsAnswers[i]?'correct':'incorrect'}">
+      <div class="review-q">${q.q}</div>
+      <div class="review-a">${q.a}</div>
     </div>
-  ` : '';
+  `).join('');
   
   return `
-    <div class="card results-card">
-      <div class="results-icon">${passed?'🎉':'📚'}</div>
-      <h2 class="results-title">${passed?'Interview Complete!':'Keep Practicing!'}</h2>
-      ${scoreSection}
-      <button class="btn btn-primary" id="restartBtn" style="width:100%;margin-bottom:15px">Practice Again</button>
-      <button class="btn btn-secondary" id="homeBtn" style="width:100%">Back to Menu</button>
-      ${reviewSection}
+    <div class="card">
+      <div class="results-card">
+        <div class="results-icon">${passed?'🎉':'📚'}</div>
+        <div class="results-title">${passed?'Congratulations!':'Keep Practicing!'}</div>
+        <div class="results-score">${correct} / ${total}</div>
+        <div style="font-size:1.3rem;margin-bottom:15px;">${percentage}% Correct</div>
+        <div class="results-message">
+          ${passed?'You passed! You answered 6 or more questions correctly. Great job!':'You need 6 correct answers to pass. Keep practicing - you can do it!'}
+        </div>
+        
+        <div style="text-align:left;">
+          <h3 style="margin-bottom:15px;font-family:'Merriweather',serif;">Review Your Answers:</h3>
+          ${review}
+        </div>
+        
+        <div style="margin-top:25px;">
+          <button class="nav-btn primary-btn" onclick="backToHome()" style="width:100%;">
+            Try Another Interview
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="speaking-tip"><p class="speaking-tip-label">💡 Great Practice!</p><p class="speaking-tip-text">Keep practicing out loud to build confidence!</p></div>
   `;
 }
 
-function attachEventListeners(){
-  document.querySelectorAll('[data-mode]').forEach(btn=>btn.addEventListener('click',()=>startInterview(btn.dataset.mode)));
-  document.querySelectorAll('[data-input]').forEach(btn=>btn.addEventListener('click',()=>{state.inputMode=btn.dataset.input;state.voiceError=null;render();}));
+function startMode(mode){
+  state.mode=mode;
+  state.screen='interview';
+  state.currentIndex=0;
+  state.showingAnswer=false;
+  state.spokenText='';
+  state.civicsAnswers=[];
   
-  const backBtn=document.getElementById('backBtn');
-  if(backBtn) backBtn.addEventListener('click',()=>{stopRecording();state.screen='home';render();});
-  
-  const listenBtn=document.getElementById('listenBtn');
-  if(listenBtn) listenBtn.addEventListener('click',()=>{
-    const qs=state.phase==='personal'?PERSONAL_QUESTIONS:state.civicsQuestions;
-    speak(qs[state.currentIndex].q);
-  });
-  
-  const voiceBtn=document.getElementById('voiceBtn');
-  if(voiceBtn) voiceBtn.addEventListener('click',()=>{state.isRecording?stopRecording():startRecording();});
-  
-  const answerInput=document.getElementById('answerInput');
-  if(answerInput){
-    answerInput.addEventListener('input',e=>{state.userAnswer=e.target.value;});
-    answerInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();submitAnswer();}});
-    answerInput.focus();
+  if(mode==='personal'){
+    state.phase='personal';
+    state.personalQuestions=shuffle(PERSONAL_QUESTIONS).slice(0,6);
+  }else if(mode==='tricky'){
+    state.phase='tricky';
+    state.trickyQuestions=shuffle(TRICKY_QUESTIONS).slice(0,8);
+  }else if(mode==='civics'){
+    state.phase='civics';
+    state.civicsQuestions=shuffle(CIVICS_QUESTIONS).slice(0,10);
+  }else if(mode==='full'){
+    state.phase='personal';
+    state.personalQuestions=shuffle(PERSONAL_QUESTIONS).slice(0,6);
+    state.trickyQuestions=shuffle(TRICKY_QUESTIONS).slice(0,4);
+    state.civicsQuestions=shuffle(CIVICS_QUESTIONS).slice(0,10);
   }
   
-  const submitBtn=document.getElementById('submitBtn');
-  if(submitBtn) submitBtn.addEventListener('click',submitAnswer);
-  
-  const showAnswerBtn=document.getElementById('showAnswerBtn');
-  if(showAnswerBtn) showAnswerBtn.addEventListener('click',()=>{state.showingAnswer=true;render();});
-  
-  const nextBtn=document.getElementById('nextBtn');
-  if(nextBtn) nextBtn.addEventListener('click',nextQuestion);
-  
-  const restartBtn=document.getElementById('restartBtn');
-  if(restartBtn) restartBtn.addEventListener('click',()=>startInterview(state.mode));
-  
-  const homeBtn=document.getElementById('homeBtn');
-  if(homeBtn) homeBtn.addEventListener('click',()=>{state.screen='home';render();});
-}
-
-function startInterview(mode){
-  state.mode=mode;state.screen='interview';state.currentIndex=0;
-  state.personalAnswers=[];state.civicsAnswers=[];state.userAnswer='';
-  state.showingAnswer=false;state.voiceError=null;
-  state.phase = mode==='civics' ? 'civics' : 'personal';
-  state.civicsQuestions = shuffleArray(CIVICS_QUESTIONS).slice(0,10);
   render();
 }
 
-function submitAnswer(){
-  stopRecording();
-  if(state.phase==='personal'){
-    state.personalAnswers.push({question:PERSONAL_QUESTIONS[state.currentIndex].q,answer:state.userAnswer});
-    nextQuestion();
-  } else {
-    const currentQ=state.civicsQuestions[state.currentIndex];
-    const userAns=state.userAnswer.toLowerCase().trim();
-    const correctOpts=currentQ.a.toLowerCase().split(' / ').map(a=>a.trim());
-    const isCorrect=correctOpts.some(ans=>{
-      const words=ans.split(/\s+/);
-      return words.some(w=>w.length>3&&userAns.includes(w))||userAns.includes(ans)||ans.includes(userAns);
-    });
-    state.civicsAnswers.push({question:currentQ.q,answer:currentQ.a,userAnswer:state.userAnswer,correct:isCorrect&&state.userAnswer.length>0});
-    state.showingAnswer=true;render();
+function backToHome(){
+  if(state.recognition && state.isRecording){
+    state.recognition.stop();
   }
+  window.speechSynthesis.cancel();
+  state.screen='home';
+  state.mode=null;
+  state.phase='personal';
+  state.currentIndex=0;
+  state.spokenText='';
+  state.isRecording=false;
+  render();
 }
 
 function nextQuestion(){
-  state.userAnswer='';state.showingAnswer=false;state.voiceError=null;state.currentIndex++;
-  const isPersonal=state.phase==='personal';
-  const qs=isPersonal?PERSONAL_QUESTIONS:state.civicsQuestions;
-  if(state.currentIndex>=qs.length){
-    if(state.mode==='full'&&isPersonal){state.phase='civics';state.currentIndex=0;}
-    else state.screen='results';
+  if(state.recognition && state.isRecording){
+    state.recognition.stop();
+    state.isRecording=false;
   }
+  state.spokenText='';
+  
+  let questions;
+  if(state.phase==='personal'){
+    questions=state.personalQuestions;
+  }else if(state.phase==='tricky'){
+    questions=state.trickyQuestions;
+  }else{
+    questions=state.civicsQuestions;
+  }
+  
+  if(state.currentIndex<questions.length-1){
+    state.currentIndex++;
+  }else{
+    // Move to next phase or finish
+    if(state.mode==='full'){
+      if(state.phase==='personal'){
+        state.phase='tricky';
+        state.currentIndex=0;
+      }else if(state.phase==='tricky'){
+        state.phase='civics';
+        state.currentIndex=0;
+      }else{
+        state.screen='results';
+      }
+    }else if(state.mode==='tricky'){
+      backToHome();
+      alert('Great job practicing the tricky questions!');
+      return;
+    }else{
+      backToHome();
+      alert('Great job practicing!');
+      return;
+    }
+  }
+  
   render();
 }
 
+function showAnswer(){
+  state.showingAnswer=true;
+  render();
+}
+
+function markAnswer(correct){
+  state.civicsAnswers[state.currentIndex]=correct;
+  state.showingAnswer=false;
+  state.spokenText='';
+  
+  if(state.recognition && state.isRecording){
+    state.recognition.stop();
+    state.isRecording=false;
+  }
+  
+  if(state.currentIndex<state.civicsQuestions.length-1){
+    state.currentIndex++;
+  }else{
+    state.screen='results';
+  }
+  
+  render();
+}
+
+// Initialize
 initSpeechRecognition();
 render();
 </script>
